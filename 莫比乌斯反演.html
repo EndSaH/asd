@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="A8iM0WwEIX">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Courier:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Ingress_32px.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Ingress_16px.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="在看这篇文章的时候，最好拿出草稿纸在该推的地方动手推一下。 文章里面函数定义域都是 $Z_+$。 前置芝士莫比乌斯反演的大概意义知道 $F$ 与 $f$ 的关系，反推出 $f$ 与 $F$ 的关系。 请注意，这里的 $f$ 和 $F$ 均是函数。">
+<meta name="keywords" content="数论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫比乌斯反演">
+<meta property="og:url" content="https://endsah.cf/莫比乌斯反演.html">
+<meta property="og:site_name" content="k维空间">
+<meta property="og:description" content="在看这篇文章的时候，最好拿出草稿纸在该推的地方动手推一下。 文章里面函数定义域都是 $Z_+$。 前置芝士莫比乌斯反演的大概意义知道 $F$ 与 $f$ 的关系，反推出 $f$ 与 $F$ 的关系。 请注意，这里的 $f$ 和 $F$ 均是函数。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-18T12:09:53.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="莫比乌斯反演">
+<meta name="twitter:description" content="在看这篇文章的时候，最好拿出草稿纸在该推的地方动手推一下。 文章里面函数定义域都是 $Z_+$。 前置芝士莫比乌斯反演的大概意义知道 $F$ 与 $f$ 的关系，反推出 $f$ 与 $F$ 的关系。 请注意，这里的 $f$ 和 $F$ 均是函数。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://endsah.cf/莫比乌斯反演.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>莫比乌斯反演 | k维空间</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">k维空间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">EndSaH's blog</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://endsah.cf/莫比乌斯反演.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EndSaH">
+      <meta itemprop="description" content="Life is what you make it.">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="k维空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">莫比乌斯反演
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-13 11:18:00" itemprop="dateCreated datePublished" datetime="2019-02-13T11:18:00+08:00">2019-02-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-18 20:09:53" itemprop="dateModified" datetime="2019-02-18T20:09:53+08:00">2019-02-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识点/" itemprop="url" rel="index"><span itemprop="name">知识点</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/莫比乌斯反演.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/莫比乌斯反演.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>在看这篇文章的时候，最好拿出草稿纸在该推的地方动手推一下</strong>。</p>
+<p>文章里面函数定义域都是 $Z_+$。</p>
+<h1 id="前置芝士"><a href="#前置芝士" class="headerlink" title="前置芝士"></a>前置芝士</h1><h2 id="莫比乌斯反演的大概意义"><a href="#莫比乌斯反演的大概意义" class="headerlink" title="莫比乌斯反演的大概意义"></a>莫比乌斯反演的大概意义</h2><p><strong>知道 $F$ 与 $f$ 的关系，反推出 $f$ 与 $F$ 的关系</strong>。</p>
+<p><strong>请注意，这里的 $f$ 和 $F$ 均是函数</strong>。</p>
+<a id="more"></a>
+<h2 id="整除分块"><a href="#整除分块" class="headerlink" title="整除分块"></a>整除分块</h2><p>实际上和莫比乌斯反演关系不大，主要是应用到题目里面经常要用。</p>
+<p>一种 $O(\sqrt{n})$ 求得 </p>
+<p>$$<br>\sum_{i = 1}^{n} \lfloor \frac{n}{i} \rfloor<br>$$</p>
+<p>的方法。</p>
+<p>朴素扫描显然是 $O(n)$ 的。但是仔细观察可以发现，答案实际上被分为了几个内部元素相同的块。</p>
+<p>例如当 $n = 10$ 时，答案分别为：</p>
+<p>$$<br>\lfloor \frac{10}{1} \rfloor, \lfloor \frac{10}{2} \rfloor, \cdots,\lfloor \frac{10}{10} \rfloor<br>$$</p>
+<p>即</p>
+<p>$$<br>[10], [5], [3], [2, 2], [1, 1, 1, 1, 1]<br>$$</p>
+<p>用 $[\ ]$ 括起来的就是所描述的块。</p>
+<p>既然块内元素相同，那么再扫描过去显然是没有必要的；这时，就可以使用一个玄学的公式，得到当前块的区间的右端点：</p>
+<p>$$<br>\lfloor \frac{n}{\lfloor \frac{n}{i} \rfloor} \rfloor<br>$$</p>
+<p><del>证明？不会</del></p>
+<p>写成代码就是：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> l = <span class="number">1</span>, r; l &lt;= n; l = r + <span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    r = n / (n / l);</span><br><span class="line">    ans += (r - l + <span class="number">1</span>) * (n / l);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度大概是 $O(\sqrt{n})$ <del>一样不会证</del></p>
+<h2 id="各类定义"><a href="#各类定义" class="headerlink" title="各类定义"></a>各类定义</h2><p>$d|n$ ：$d$ 整除 $n$，即 $d$ 为 $n$ 的因子</p>
+<p>$(a, b)$：$a, b$ 的最大公因数，即 $\text{gcd}(a, b)$</p>
+<p>$C^k_n$：组合数，即从 $n$ 个物品中选出 $k$ 个物品的方案数</p>
+<p>$[P]$：命题 $P$ 成立，值为 $1$；否则为 $0$</p>
+<p>$w(n)$：$n$ 的不同质因子的个数，特别地，$w(1) = 0$</p>
+<p>欧拉函数 $\varphi(n)$：小于等于 $n$ 的正整数中，与 $n$ 互质的数的个数，$\varphi(1) = 1$</p>
+<p>积性函数：当 $\text{gcd}(a,b) = 1$ 时，函数 $f$ 满足 $f(ab) = f(a) \times f(b)$，则称 $f$ 为积性函数。</p>
+<p><strong>完全</strong>积性函数：去掉 $\text{gcd}(a,b)=1$ 的限制，即对于任意的 $a, b$，函数 $f$ 都有 $f(ab) = f(a) \times f(b)$，则称 $f$ 为完全积性函数。</p>
+<h1 id="狄利克雷卷积"><a href="#狄利克雷卷积" class="headerlink" title="狄利克雷卷积"></a>狄利克雷卷积</h1><p>如开头所说，我们首先需要知道 $F$ 和 $f$ 的关系。</p>
+<p>狄利克雷卷积正是数学家发明的用于表达函数间关系的运算。</p>
+<p>对于算术函数 $f, g$，定义其狄利克雷卷积为：</p>
+<p>$$<br>(f \ast g)(n) = \sum_{d | n} f(d)g(\frac n d)<br>$$</p>
+<p>其中的 $\ast$ 即为狄利克雷卷积，你可以将 $(f \ast g)$ 视作一个新函数 $h$，后面的 $(n)$ 是 $h$ 的自变量。</p>
+<p>通俗点讲，它就是一种运算符，和 $+, -, \times, \div$ 没有任何区别；</p>
+<p>只不过加减乘除对<strong>数</strong>进行运算，而 $\ast$ 是对<strong>函数</strong>进行运算。</p>
+<p>类似于我们称 $a \times b$ 为“ $a$ 乘 $b$ ”，我一般称 $a \ast b$ 为“ $a$ 卷 $b$ ”。</p>
+<p>下面给出一些性质（摘自维基百科）：</p>
+<blockquote>
+<ol>
+<li>交换律：$f \ast g = g \ast f$。</li>
+<li>结合律：$f \ast (g \ast h) = (f \ast g) \ast h$</li>
+<li>存在单位函数 $\epsilon(n) = [n = 1]$，使得任意算术函数 $f$ 都满足 $f \ast \epsilon = f$。</li>
+<li>若 $f, g$ 为积性函数，那么 $f \ast g$ 也是积性函数。</li>
+<li>对于任意算术函数 $f$，若 $f(1) \not= 0$，都有唯一的逆函数 $f^{-1}$，使得 $f^{-1} \ast f = \epsilon$。</li>
+</ol>
+</blockquote>
+<p>1 的证明：显然，</p>
+<p>$$<br>(f \ast g)(n) = \sum_{d | n} f(d)g(\frac n d) = \sum_{d | n} f(\frac n d) g(d) = (g \ast f)(n)<br>$$</p>
+<p>4 的证明：$(a, b) = 1$ 时，</p>
+<p>$$<br>\begin{aligned}<br>    (f \ast g)(a) \times (f \ast g)(b) &amp;= (\sum_{u|a} f(u)g(\frac{a}{u})) \times (\sum_{v|b} f(v)g(\frac{b}{v})) \\<br>    &amp;= \sum_{u|a} \sum_{v|b} f(u)g(\frac{a}{u})f(v)g(\frac{b}{v} ) \\<br>    &amp;= \sum_{u|a} \sum_{v|b} f(uv)g(\frac{ab}{uv}) \\<br>    &amp;= \sum_{d|ab} f(d)g(\frac{ab}{d}) \\<br>    &amp;= (f \ast g)(ab)<br>\end{aligned}<br>$$</p>
+<p>$uv$ 可以变成 $d$，是因为 $(a, b) = 1$。（仔细想想为什么）</p>
+<p>$\epsilon(n)$ 用人话来讲就是判断一个数是否为 $1$，是函数值就是 $1$，否则就是 $0$。</p>
+<p>结合律和 $f \ast \epsilon = f$ 的证明，请手推一下。</p>
+<p>逆函数的话暂且不用管，不过你应该也可以想到反演会与逆函数有关了- -</p>
+<h1 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h1><p>定义：</p>
+<p>$$<br>\mu(n) = \begin{cases}<br>    1, &amp; n = 1 \\<br>    (-1)^{w(n)}, &amp; n\text{ 的质因子的最大幂次不超过 }1 \\<br>    0, &amp; \text{其余情况}<br>\end{cases}<br>$$</p>
+<p>易证其为积性函数。</p>
+<p>引理：</p>
+<p>$$<br>\sum_{d|n} \mu(d) = \begin{cases}<br>    1, &amp; d = 1 \\<br>    0, &amp; d &gt; 1<br>\end{cases}<br>$$</p>
+<p>等号右边其实就是 $\epsilon(d)$。</p>
+<p>证明：</p>
+<p>$n = 1$ 时，显然成立；</p>
+<p>否则按照定义，将 $d$ 分解后质因子最大幂次超过 $1$ 的不作考虑（$0$ 对答案显然没有影响）；</p>
+<p>那么，剩下的需要考虑的 $d$，就相当于从 $n$ 的各个质因子中取出一部分任意组合。（特别地，将 $d = 1$ 视作取出 $0$ 个质因子）</p>
+<p>例如当 $n = 12$ 时，对答案有影响的 $d$，只由 $1$ 和 $2, 3$ 这两个质因子任意组合而成。（此处 $d$ 可等于 $1, 2, 3, 6$，其中 $6 = 2 \times 3$）</p>
+<p>从 $w(n)$ 个质因子中取出 $i$ 个，方案数显然是 $C_{w(n)}^i$；对答案的影响，就再乘上 $(-1)^i$ 即可。</p>
+<p>于是式子变成了这样：</p>
+<p>$$<br>\sum_{d|n} \mu(d) = \sum_{i = 0}^{w(n)} C^i_{w(n)} (-1)^i<br>$$</p>
+<p>看起来是不是有点眼熟？回顾一下二项式定理：</p>
+<p>$$<br>(a + b)^n = \sum_{i = 0}^n C^i_n a^i b^{n - i}<br>$$</p>
+<p>于是将上式乘上 $1^{w(n) - i}$，则可化为：</p>
+<p>$$<br>\sum_{i = 0}^{w(n)} C^i_{w(n)} (-1)^i 1^{w(n) - i} = (-1 + 1)^{w(n)} = 0<br>$$</p>
+<p>至此得证。</p>
+<p>现在有一个问题：这个式子证出来有什么用呢？别急。</p>
+<p>这时定义函数 $1(n)$，无论 $n$ 为何值，函数值都为 $1$。</p>
+<p>显然，其为完全积性函数，并且对于任意函数 $f$，显然都有以下式子成立：</p>
+<p>$$<br>(1 \ast f)(n) = \sum_{d|n} f(d)<br>$$</p>
+<p>也就是说：</p>
+<p>$$<br>\mu \ast 1 = \sum_{d|n} \mu(d) = \epsilon<br>$$</p>
+<p>即 $\mu$ 与 $1$ 互为逆函数。</p>
+<p>感性想想都可以知道，与 $1$ 这种函数互逆，一定会有一些特殊的性质，<del>这也就是构造这么一个奇怪函数的理由</del>。</p>
+<p>更新：我并不知道莫比乌斯函数和狄利克雷卷积的先后关系，若是 $\text{dalao}$ 知道可以顺便说一下历史- -</p>
+<p>然后，这里可以再给出一个神奇的东西：</p>
+<p>定义函数 $Id(n) = n$，即函数值等于自变量值，你会发现：</p>
+<p>$$<br>\varphi \ast 1 = Id \\<br>\mu \ast Id = \varphi<br>$$</p>
+<p>那么接下来，回到正题－－</p>
+<h1 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h1><p>直接给出具体内容：</p>
+<p>若</p>
+<p>$$<br>f(n) = \sum_{d|n} g(d) \tag 1<br>$$</p>
+<p>则</p>
+<p>$$<br> g(n) = \sum_{d|n} \mu(d) f(\lfloor \frac n d \rfloor) \tag 2<br>$$</p>
+<p>并且其逆命题也成立。</p>
+<p>证明：</p>
+<p>$(1)$ 式可转化为 $f = 1 \ast g$，$(2)$ 式可转化为 $g = \mu \ast f$。</p>
+<p>将 $(1)$ 式两边同卷上 $\mu$：</p>
+<p>$$<br>f \ast \mu = \mu \ast 1 \ast g<br>$$</p>
+<p>发现 $\mu \ast 1 = \epsilon$，且 $g \ast \epsilon = g$</p>
+<p>则式子变为：</p>
+<p>$$<br>f \ast \mu = g<br>$$</p>
+<p>至此得证。</p>
+<p>证明是不是看起来很简单？毕竟在前面学了一大堆东西，这里再证就显得容易很多了- -</p>
+<p>讲完了吗？讲完了。</p>
+<p>你肯定还是有点迷糊，那么接下来，我们来看一道例题－－</p>
+<h1 id="例1-text-ZAP-Queries"><a href="#例1-text-ZAP-Queries" class="headerlink" title="例1 $\text{ZAP-Queries}$"></a>例1 <a href="https://www.luogu.org/problemnew/show/P3455" rel="external nofollow noopener noreferrer" target="_blank">$\text{ZAP-Queries}$</a></h1><h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>$T$ 组询问。</p>
+<p>对于给定的正整数 $a, b, x$，求出：</p>
+<p>$$<br>\sum_{i = 1}^a \sum_{j = 1}^b [(i, j) = x]<br>$$</p>
+<p>$1 \le x \le a, b \le 5 \times 10^4$，$T \le 5 \times 10^4$。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>朴素算法显然 $O(n^2 \text{log} n)$。（这里 $n$ 和 $a, b$ 同阶，且带上了 $\text{gcd}$ 的 $\text{log}$）</p>
+<p>怎么把我们所学的莫比乌斯反演的知识应用上去呢？</p>
+<p>观察一下题目所要求的式子，由于 $(i, j) \not = x$ 的情况对答案无影响，不妨将枚举的 $i, j$ 的意义从“具体数字”变为“是 $x$ 的几倍”。</p>
+<p>这样就可以保证 $(ix, jx) = x$， 于是式子变为这样：</p>
+<p>$$<br>\sum_{i = 1}^{\lfloor \frac a x \rfloor} \sum_{j = 1}^{\lfloor \frac b x \rfloor} [(i, j) = 1]<br>$$</p>
+<p>这时候，式子中出现了一个有意思的东西：$[(i, j) = 1]$</p>
+<p>这跟单位元 $\epsilon(n) = [n = 1]$ 的样子不是一模一样吗？</p>
+<p>那么开始化式子：</p>
+<p>$$<br>\begin{aligned}<br>    &amp; \sum_{i = 1}^{\lfloor \frac a x \rfloor} \sum_{j = 1}^{\lfloor \frac b x \rfloor} [(i, j) = 1] \\<br>    =&amp; \sum_{i = 1}^{\lfloor \frac a x \rfloor} \sum_{j = 1}^{\lfloor \frac b x \rfloor} \epsilon((i, j)) \\<br>    =&amp; \sum_{i = 1}^{\lfloor \frac a x \rfloor} \sum_{j = 1}^{\lfloor \frac b x \rfloor} \sum_{d|(i, j)} \mu(d)<br>\end{aligned}<br>$$</p>
+<p>由 $d|(i, j)$，可知 $d|i$ 且 $d|j$。那么我们可以考虑更换枚举顺序，同时再次更改 $i, j$ 的意义。</p>
+<p>先枚举 $d$，再枚举 $i, j$，此时 $i, j$ 的意义再次变为：“是 $xd$ 的几倍”。</p>
+<p>于是式子变成这样：</p>
+<p>$$<br>\begin{aligned}<br>    &amp; \sum_d \mu(d) \sum_{i = 1}^{\lfloor \frac a {xd} \rfloor} \sum_{j = 1}^{\lfloor \frac b {xd} \rfloor} 1 \\<br>    =&amp; \sum_d \mu(d) \lfloor \frac a {xd} \rfloor \lfloor \frac b {xd} \rfloor<br>\end{aligned}<br>$$</p>
+<p>至此，式子就全部化完了，回答询问时间已经从 $O(n^2 \text{log} n)$ 降为了 $O(n)$。（实际观察式子，$O(n)$ 也只是极端情况，很多时候跑不到）</p>
+<p>但是因为有多组询问，我们可以运用上面所讲的<strong>整除分块</strong>的方法，将处理询问的时间优化到 $O(\sqrt n)$。</p>
+<p>具体而言，$\lfloor \frac a {xd} \rfloor \lfloor \frac b {xd} \rfloor$ 这两个式子分别都会有自己的不同的分块。</p>
+<p>也就是说，对于当前位置 $l$，$a, b$ 都分别有其对应位置 $r_a = \lfloor \frac a {\lfloor \frac a l \rfloor} \rfloor, r_b = \lfloor \frac b {\lfloor \frac b l \rfloor} \rfloor$</p>
+<p><strong>将 $\lfloor \frac a {xd} \rfloor \lfloor \frac b {xd} \rfloor$ 这两个相乘的式子视作整体，那么只有取 $r_a, r_b$ 中最小的（定义为 $r$），才能保证 $[l, r]$ 中 $\lfloor \frac a {xd} \rfloor \lfloor \frac b {xd} \rfloor$ 全部相等</strong>。</p>
+<p>既然 $\lfloor \frac a {xd} \rfloor \lfloor \frac b {xd} \rfloor$ 已经全部相等，$\mu(d)$ 用一个简单的前缀和累计一下就可以了。</p>
+<p>但是这里再次牵扯出来一个问题：如何快速求出 $\mu$？</p>
+<p>因为 $\mu$ 是积性函数，所以我们稍稍改变一下以前学过的线性筛素数的方法，就可以在线性时间内筛出所有 $\mu(i)$ 的值了。</p>
+<p><del>都学莫比乌斯反演了你不要跟我讲你不会线性筛</del></p>
+<p>（其实有比线性筛更优秀的做法，等我学了再补吧233）</p>
+<p>具体而言，若当前数是质数，那么 $\mu$ 值为 $-1$；</p>
+<p>设用来筛其他数的当前数为 $i$，遍历到的当前质数为 $p$，那么在 $p$ 小于 $i$ 的最小质因子时， $\mu(pi) = -\mu(i)$。</p>
+<p>为什么？仔细想想，在遍历到最小质因子之前，当前数和所遍历到的质数一定互质（显然，要不然就和最小质因子矛盾了）</p>
+<p>也就是说，$w(pi) = w(i) + 1$。所以有了上述式子。</p>
+<p>如果 $p$ 大于等于 $i$ 最小质因子，就不用筛了（线性筛原理）</p>
+<p>实现可以看下代码。</p>
+<p>以下是整体代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**********************************************************</span></span><br><span class="line"><span class="comment"> * Author        : EndSaH</span></span><br><span class="line"><span class="comment"> * Email         : hjxhb1@gmail.com</span></span><br><span class="line"><span class="comment"> * Created Time  : 2019-02-16 10:38</span></span><br><span class="line"><span class="comment"> * FileName      : else.cpp</span></span><br><span class="line"><span class="comment"> * Website       : https://endsah.cf</span></span><br><span class="line"><span class="comment"> * *******************************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> uint;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(...) fprintf(stderr, __VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Debug(s) debug(<span class="meta-string">"The message in line %d, Function %s: %s\n"</span>, __LINE__, __FUNCTION__, s)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar() (ipos == iend and (iend = (ipos = _ibuf) + fread(_ibuf, 1, __bufsize, stdin), ipos == iend) ? EOF : *ipos++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> putchar(ch) (opos == oend ? fwrite(_obuf, 1, __bufsize, stdout), opos = _obuf : 0, *opos++ = (ch))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __bufsize (1 &lt;&lt; 21)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> _ibuf[__bufsize], _obuf[__bufsize], _stk[<span class="number">20</span>];</span><br><span class="line"><span class="keyword">char</span> *ipos = _ibuf, *iend = _ibuf, *opos = _obuf, *oend = _obuf + __bufsize, *stkpos = _stk;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">END</span></span></span><br><span class="line"><span class="class">&#123;</span> ~END() &#123; fwrite(_obuf, <span class="number">1</span>, opos - _obuf, <span class="built_in">stdout</span>); &#125; &#125;</span><br><span class="line">__;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar()));</span><br><span class="line">    <span class="keyword">while</span> (x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (ch &amp; <span class="number">15</span>), <span class="built_in">isdigit</span>(ch = getchar()));</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _INT&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(_INT x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (*++stkpos = x % <span class="number">10</span> ^ <span class="number">48</span>, x /= <span class="number">10</span>, x);</span><br><span class="line">    <span class="keyword">while</span> (stkpos != _stk)</span><br><span class="line">        <span class="built_in">putchar</span>(*stkpos--);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Chkmax</span><span class="params">(_Tp&amp; x, <span class="keyword">const</span> _Tp&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> x &lt; y ? x = y, <span class="literal">true</span> : <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Chkmin</span><span class="params">(_Tp&amp; x, <span class="keyword">const</span> _Tp&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> x &gt; y ? x = y, <span class="literal">true</span> : <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxN = <span class="number">5e4</span> + <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T, a, b, x;</span><br><span class="line">LL ans;</span><br><span class="line"><span class="keyword">int</span> mu[maxN], premu[maxN];</span><br><span class="line"><span class="keyword">bool</span> vis[maxN];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; prim;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Shuffle</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    premu[<span class="number">1</span>] = mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i])</span><br><span class="line">            prim.push_back(i), mu[i] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> uint j = <span class="number">0</span>; j &lt; prim.size() <span class="keyword">and</span> prim[j] * i &lt;= n; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[i * prim[j]] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prim[j])</span><br><span class="line">                mu[i * prim[j]] = -mu[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        premu[i] = premu[i - <span class="number">1</span>] + mu[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"else.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"else.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    T = read(), Shuffle(maxN - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        a = read(), b = read(), x = read(), ans = <span class="number">0</span>;</span><br><span class="line">        a /= x, b /= x;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> l = <span class="number">1</span>, r; l &lt;= <span class="built_in">std</span>::min(a, b); l = r + <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            r = <span class="built_in">std</span>::min(a / (a / l), b / (b / l));</span><br><span class="line">            ans += (premu[r] - premu[l - <span class="number">1</span>]) * (LL)(a / l) * (b / l);</span><br><span class="line">        &#125;</span><br><span class="line">        write(ans), <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="例2-text-YY-的-text-GCD"><a href="#例2-text-YY-的-text-GCD" class="headerlink" title="例2 $\text{YY}$ 的 $\text{GCD}$"></a>例2 $\text{YY}$ 的 $\text{GCD}$</h1><h2 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a>题目大意</h2><p>$T$ 组数据。</p>
+<p>给定 $n, m$，求</p>
+<p>$$<br>\sum_{i = 1}^n \sum_{j = 1}^m [(i, j) \in \mathbb P]<br>$$</p>
+<p>其中 $\mathbb P$ 表示质数集合。</p>
+<p>$T = 10^4, n, m \le 10^7$。</p>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>（这里设 $n \le m$）</p>
+<p>判其是否为质数可能不太好搞，那我们直接在外面枚举质数就行。</p>
+<p>式子变成这样：</p>
+<p>$$<br>\sum_{p \in \mathbb P} \sum_{i = 1}^n \sum_{j = 1}^m [(i, j) = p]<br>$$</p>
+<p>然后和上一题同理：</p>
+<p>$$<br>\sum_{p \in \mathbb P} \sum_{d} \mu(d) \lfloor \frac{n}{pd} \rfloor \lfloor \frac{m}{pd} \rfloor<br>$$</p>
+<p><del>然后就可以愉快地做了</del></p>
+<p>然后 T 飞了。复杂度过高，大概是 $O(T |\mathbb P| \sqrt n)$。</p>
+<p>对于这种看似最简化的式子，我们需要一个常用的优化技巧：</p>
+<p>令 $x = pd$，则 $d = \frac x p$，式子变为：</p>
+<p>$$<br>\sum_{p \in \mathbb P} \sum_{d = 1}^{\lfloor \frac n p \rfloor} \mu(\frac x p) \lfloor \frac{n}{x} \rfloor \lfloor \frac{m}{x} \rfloor<br>$$</p>
+<p>再次改变枚举顺序，把 $x$ 提到前面来：</p>
+<p>$$<br>\sum_{x = 1}^n \lfloor \frac{n}{x} \rfloor \lfloor \frac{m}{x} \rfloor \sum_{p \in \mathbb P, p | x} \mu(\frac x p)<br>$$</p>
+<p>可以发现</p>
+<p>$$<br>\sum_{p \in \mathbb P, p | x} \mu(\frac x p)<br>$$</p>
+<p>这玩意是可以预处理的，线性筛完枚举质数，算其对其倍数的贡献就行，。</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**********************************************************</span></span><br><span class="line"><span class="comment"> * Author        : EndSaH</span></span><br><span class="line"><span class="comment"> * Email         : hjxhb1@gmail.com</span></span><br><span class="line"><span class="comment"> * Created Time  : 2019-02-16 16:13</span></span><br><span class="line"><span class="comment"> * FileName      : else.cpp</span></span><br><span class="line"><span class="comment"> * Website       : https://endsah.cf</span></span><br><span class="line"><span class="comment"> * *******************************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> uint;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(...) fprintf(stderr, __VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Debug(s) debug(<span class="meta-string">"The message in line %d, Function %s: %s\n"</span>, __LINE__, __FUNCTION__, s)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar() (ipos == iend and (iend = (ipos = _ibuf) + fread(_ibuf, 1, __bufsize, stdin), ipos == iend) ? EOF : *ipos++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> putchar(ch) (opos == oend ? fwrite(_obuf, 1, __bufsize, stdout), opos = _obuf : 0, *opos++ = (ch))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __bufsize (1 &lt;&lt; 21)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> _ibuf[__bufsize], _obuf[__bufsize], _stk[<span class="number">20</span>];</span><br><span class="line"><span class="keyword">char</span> *ipos = _ibuf, *iend = _ibuf, *opos = _obuf, *oend = _obuf + __bufsize, *stkpos = _stk;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">END</span></span></span><br><span class="line"><span class="class">&#123;</span> ~END() &#123; fwrite(_obuf, <span class="number">1</span>, opos - _obuf, <span class="built_in">stdout</span>); &#125; &#125;</span><br><span class="line">__;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar()));</span><br><span class="line">    <span class="keyword">while</span> (x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (ch &amp; <span class="number">15</span>), <span class="built_in">isdigit</span>(ch = getchar()));</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _INT&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(_INT x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (*++stkpos = x % <span class="number">10</span> ^ <span class="number">48</span>, x /= <span class="number">10</span>, x);</span><br><span class="line">    <span class="keyword">while</span> (stkpos != _stk)</span><br><span class="line">        <span class="built_in">putchar</span>(*stkpos--);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Chkmax</span><span class="params">(_Tp&amp; x, <span class="keyword">const</span> _Tp&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> x &lt; y ? x = y, <span class="literal">true</span> : <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Chkmin</span><span class="params">(_Tp&amp; x, <span class="keyword">const</span> _Tp&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> x &gt; y ? x = y, <span class="literal">true</span> : <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxN = <span class="number">1e7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T, n, m;</span><br><span class="line">LL ans;</span><br><span class="line"><span class="keyword">int</span> mu[maxN + <span class="number">1</span>], F[maxN + <span class="number">1</span>];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">bitset</span>&lt;maxN + 1&gt; vis;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; prim;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Shuffle</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>, prim.reserve(<span class="keyword">int</span>(<span class="number">6e5</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxN; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i])</span><br><span class="line">            prim.push_back(i), mu[i] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> uint j = <span class="number">0</span>; j &lt; prim.size() <span class="keyword">and</span> i * prim[j] &lt;= maxN; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            vis.<span class="built_in">set</span>(i * prim[j]);</span><br><span class="line">            <span class="keyword">if</span> (i % prim[j])</span><br><span class="line">                mu[i * prim[j]] = -mu[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> uint i = <span class="number">0</span>; i &lt; prim.size(); ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; prim[i] * j &lt;= maxN; ++j)</span><br><span class="line">            F[prim[i] * j] += mu[j];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= maxN; ++i)</span><br><span class="line">        F[i] += F[i - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"else.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"else.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    T = read(), Shuffle();</span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        n = read(), m = read(), ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (n &gt; m)</span><br><span class="line">            <span class="built_in">std</span>::swap(n, m);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> l = <span class="number">1</span>, r; l &lt;= n; l = r + <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            r = <span class="built_in">std</span>::min(n / (n / l), m / (m / l));</span><br><span class="line">            ans += LL(F[r] - F[l - <span class="number">1</span>]) * (n / l) * (m / l);</span><br><span class="line">        &#125;</span><br><span class="line">        write(ans), <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>$\huge \text{To be continued…}$</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数论/" rel="tag"># 数论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Luogu-Tweetuzki爱序列.html" rel="next" title="[Luogu]Tweetuzki爱序列">
+                <i class="fa fa-chevron-left"></i> [Luogu]Tweetuzki爱序列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="EndSaH">
+            
+              <p class="site-author-name" itemprop="name">EndSaH</p>
+              <p class="site-description motion-element" itemprop="description">Life is what you make it.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/endsah" title="GitHub &rarr; https://github.com/endsah" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.zhihu.com/people/endsah" title="知乎 &rarr; https://www.zhihu.com/people/endsah" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-comments"></i>知乎</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gongchen618.github.io" title="https://gongchen618.github.io" rel="external nofollow noopener noreferrer" target="_blank">GCCCCCCCCC</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://muqzzz.cf" title="https://muqzzz.cf" rel="external nofollow noopener noreferrer" target="_blank">MuQiuFeng</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cnblogs.com/luoshuitianyi" title="https://cnblogs.com/luoshuitianyi" rel="external nofollow noopener noreferrer" target="_blank">LuoShuiTianYi</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hk-cnyali.com/" title="https://hk-cnyali.com/" rel="external nofollow noopener noreferrer" target="_blank">hk-cnyali</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/xunzhen/" title="https://www.cnblogs.com/xunzhen/" rel="external nofollow noopener noreferrer" target="_blank">XunZhen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xszq.tk/" title="https://xszq.tk/" rel="external nofollow noopener noreferrer" target="_blank">xszq</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qrsikno.cnblogs.com/" title="https://qrsikno.cnblogs.com/" rel="external nofollow noopener noreferrer" target="_blank">qrsikno</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yzp-blog.cf/" title="https://yzp-blog.cf/" rel="external nofollow noopener noreferrer" target="_blank">yzp</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cnblogs.com/list1" title="https://cnblogs.com/list1" rel="external nofollow noopener noreferrer" target="_blank">HJK AK IOI</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前置芝士"><span class="nav-number">1.</span> <span class="nav-text">前置芝士</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演的大概意义"><span class="nav-number">1.1.</span> <span class="nav-text">莫比乌斯反演的大概意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整除分块"><span class="nav-number">1.2.</span> <span class="nav-text">整除分块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各类定义"><span class="nav-number">1.3.</span> <span class="nav-text">各类定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#莫比乌斯函数"><span class="nav-number">3.</span> <span class="nav-text">莫比乌斯函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯反演</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例1-text-ZAP-Queries"><span class="nav-number">5.</span> <span class="nav-text">例1 $\text{ZAP-Queries}$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目大意"><span class="nav-number">5.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">5.2.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例2-text-YY-的-text-GCD"><span class="nav-number">6.</span> <span class="nav-text">例2 $\text{YY}$ 的 $\text{GCD}$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目大意-1"><span class="nav-number">6.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析-1"><span class="nav-number">6.2.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fire"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EndSaH</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'qVrkGRUo2bBsLsDkMW8bIrRg-gzGzoHsz',
+    appKey: 'wTn4qIWYgankxHTn06hxBXMk',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+<!-- 自定义的js文件 -->
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+</body>
+</html>

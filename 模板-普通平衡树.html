@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="A8iM0WwEIX">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Courier:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Ingress_32px.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Ingress_16px.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="$\text{Foreword}$To be continued. 本文代码均为指针版. 本文中所说的平衡树指的均是二叉平衡树. 本文中所说的中序遍历指的均是左中右顺序. 题面传送门: Luogu-P3369 前言平衡树板子. 给定 $n$ 次操作, 有且仅有下面6种操作:  插入 $x$. 删除 $x$ (若有多个相同的, 只删除一个). 查询 $x$ 的排名(排名定义: 比当前数小的数的个数+">
+<meta name="keywords" content="平衡树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[模板]普通平衡树">
+<meta property="og:url" content="https://endsah.cf/模板-普通平衡树.html">
+<meta property="og:site_name" content="k维空间">
+<meta property="og:description" content="$\text{Foreword}$To be continued. 本文代码均为指针版. 本文中所说的平衡树指的均是二叉平衡树. 本文中所说的中序遍历指的均是左中右顺序. 题面传送门: Luogu-P3369 前言平衡树板子. 给定 $n$ 次操作, 有且仅有下面6种操作:  插入 $x$. 删除 $x$ (若有多个相同的, 只删除一个). 查询 $x$ 的排名(排名定义: 比当前数小的数的个数+">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2018/11/23/5bf7de67267a8.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/23/5bf7de67267a8.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/23/5bf7de67267a8.png">
+<meta property="og:updated_time" content="2019-02-18T13:26:05.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[模板]普通平衡树">
+<meta name="twitter:description" content="$\text{Foreword}$To be continued. 本文代码均为指针版. 本文中所说的平衡树指的均是二叉平衡树. 本文中所说的中序遍历指的均是左中右顺序. 题面传送门: Luogu-P3369 前言平衡树板子. 给定 $n$ 次操作, 有且仅有下面6种操作:  插入 $x$. 删除 $x$ (若有多个相同的, 只删除一个). 查询 $x$ 的排名(排名定义: 比当前数小的数的个数+">
+<meta name="twitter:image" content="https://i.loli.net/2018/11/23/5bf7de67267a8.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://endsah.cf/模板-普通平衡树.html">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[模板]普通平衡树 | k维空间</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">k维空间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">EndSaH's blog</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://endsah.cf/模板-普通平衡树.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EndSaH">
+      <meta itemprop="description" content="Life is what you make it.">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="k维空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">[模板]普通平衡树
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-29 21:25:41" itemprop="dateCreated datePublished" datetime="2018-11-29T21:25:41+08:00">2018-11-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-18 21:26:05" itemprop="dateModified" datetime="2019-02-18T21:26:05+08:00">2019-02-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识点/" itemprop="url" rel="index"><span itemprop="name">知识点</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/模板-普通平衡树.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/模板-普通平衡树.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="text-Foreword"><a href="#text-Foreword" class="headerlink" title="$\text{Foreword}$"></a>$\text{Foreword}$</h1><p>To be continued.</p>
+<p><strong>本文代码均为指针版.</strong></p>
+<p>本文中所说的平衡树指的均是二叉平衡树.</p>
+<p>本文中所说的中序遍历指的均是左中右顺序.</p>
+<p>题面传送门: <a href="https://www.luogu.org/problemnew/show/P3369" rel="external nofollow noopener noreferrer" target="_blank">Luogu-P3369</a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>平衡树板子.</p>
+<p>给定 $n$ 次操作, 有且仅有下面6种操作:</p>
+<ol>
+<li>插入 $x$.</li>
+<li>删除 $x$ (若有多个相同的, 只删除一个).</li>
+<li>查询 $x$ 的排名(排名定义: 比当前数小的数的个数+1. 若有多个相同的数, 输出最小的排名).</li>
+<li>查询排名为 $x$ 的数.</li>
+<li>求 $x$ 的前驱(前驱定义: 大于 $x$ 的最小的数)</li>
+<li>求 $x$ 的后继(后继定义: 小于 $x$ 的最大的数)</li>
+</ol>
+<p>$n \le 10^5,x \in [-10^7,10^7]$.</p>
+<p>保证操作合法.</p>
+<a id="more"></a>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="平衡树基础之BST"><a href="#平衡树基础之BST" class="headerlink" title="平衡树基础之BST"></a>平衡树基础之<code>BST</code></h2><p>(注: 如果你对下文内容看的不是非常明白, 请回来<a href="https://visualgo.net/en/bst" rel="external nofollow noopener noreferrer" target="_blank">点击这里</a>, 自己操作一番, 可以加深理解)</p>
+<p>要学习平衡树, 你首先需要了解<code>二叉查找树(Binary Search Tree, BST)</code>.</p>
+<h3 id="BST定义"><a href="#BST定义" class="headerlink" title="BST定义"></a><code>BST</code>定义</h3><ol>
+<li>树中每个节点都被赋予了一个权值;(这里先假设权值互不相同)</li>
+<li>若左子树非空, 则<strong>左子树上所有节点的值均小于其根节点的值</strong>;</li>
+<li>若右子树非空, 则<strong>右子树上所有节点的值均大于其根节点的值</strong>.</li>
+</ol>
+<p>举个例子:</p>
+<p><img src="https://i.loli.net/2018/11/23/5bf7de67267a8.png" alt="example1"></p>
+<p>这就是一棵二叉查找树.</p>
+<p>看看这张图, 是不是正如我说的一样?</p>
+<p>对于<code>66</code>号节点, 左子树中分别为<code>1,19,23,45,54,59</code>, 全部小于66;</p>
+<p>右子树中分别为<code>71,77,91</code>, 全部大于66.</p>
+<p>对于<code>19</code>号节点, 左子树中分别为<code>1</code>, 全部小于19;</p>
+<p>右子树中分别为<code>23,45,54,59</code>, 全部大于19.</p>
+<p>现在大致明白了这种神奇的树了吧?</p>
+<p>这里给出一个性质:</p>
+<p><strong>二叉查找树的中序遍历是一个有序序列.</strong></p>
+<p>可以自己动手试一试画一画, 也可以用程序:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">ptr</span>;</span> <span class="comment">// 将ptr作为Node*这种类型的别称</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ptr left, right;</span><br><span class="line"></span><br><span class="line">    Node(<span class="keyword">int</span> val) : val(val) <span class="comment">// 构造函数, 初始化新节点的左右儿子为空, 值为val</span></span><br><span class="line">    &#123; left = right = <span class="literal">NULL</span>; &#125;</span><br><span class="line">&#125; *root;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print_Mid</span><span class="params">(ptr curr_node)</span> <span class="comment">// 中序遍历输出</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!curr_node) <span class="comment">// !可用于判断空指针</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    Print_Mid(curr_node-&gt;left);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, curr_node-&gt;val);</span><br><span class="line">    Print_Mid(curr_node-&gt;right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="几个基本操作"><a href="#几个基本操作" class="headerlink" title="几个基本操作"></a>几个基本操作</h3><h4 id="查找特定的值"><a href="#查找特定的值" class="headerlink" title="查找特定的值"></a>查找特定的值</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> ptr <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x, ptr curr_node)</span> <span class="comment">// 在以curr_node为根的子树中找到值为x的节点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(curr_node-&gt;val != x)</span><br><span class="line">        <span class="keyword">if</span>(x &lt; curr_node-&gt;val)</span><br><span class="line">            curr_node = curr_node-&gt;left;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            curr_node = curr_node-&gt;right;</span><br><span class="line">    <span class="keyword">return</span> curr_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>利用的还是二叉查找的思想.</p>
+<h4 id="查找最值"><a href="#查找最值" class="headerlink" title="查找最值"></a>查找最值</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> ptr <span class="title">Find_Min</span><span class="params">(ptr curr_node)</span> <span class="comment">// 在以curr_node为根的子树中找到最小值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(curr_node-&gt;left) <span class="comment">// 判断左子节点是否存在</span></span><br><span class="line">        curr_node = curr_node-&gt;left;</span><br><span class="line">    <span class="keyword">return</span> curr_node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ptr <span class="title">Find_Max</span><span class="params">(ptr curr_node)</span> <span class="comment">// 在以curr_node为根的子树中找到最大值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(curr_node-&gt;right)</span><br><span class="line">        curr_node = curr_node-&gt;right;</span><br><span class="line">    <span class="keyword">return</span> curr_node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同理, 根据二叉查找树的性质可以得出.</p>
+<h4 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="comment">// 插入值为x的节点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> ptr curr_node = root;</span><br><span class="line">    <span class="keyword">while</span>(curr_node)</span><br><span class="line">        <span class="keyword">if</span>(x &lt; curr_node-&gt;val)</span><br><span class="line">            curr_node = curr_node-&gt;left;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            curr_node = curr_node-&gt;right;</span><br><span class="line">    curr_node = <span class="keyword">new</span> Node(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同查找节点, 找到适合位置之后新建节点即可.</p>
+<p><strong>但是, 上述代码是完全错误的.</strong></p>
+<p>如果细心观察会发现: <strong><code>curr_node</code>的改变, 不影响原值.</strong></p>
+<p>上述代码所犯错误跟这段代码差不多:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ptr p = root;</span><br><span class="line">p = <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">// root == NULL? False.</span></span><br></pre></td></tr></table></figure>
+<p><code>p</code>值的修改是不可能影响到<code>root</code>的. 这个例子应该好懂了些吧?</p>
+<p>正确代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="comment">// 插入值为x的节点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!root)</span><br><span class="line">    &#123;</span><br><span class="line">        root = <span class="keyword">new</span> Node(x);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">register</span> ptr curr_node = root;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; curr_node-&gt;val)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!curr_node-&gt;left)</span><br><span class="line">            &#123;</span><br><span class="line">                curr_node-&gt;left = <span class="keyword">new</span> Node(x);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            curr_node = curr_node-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!curr_node-&gt;right)</span><br><span class="line">            &#123;</span><br><span class="line">                curr_node-&gt;right = <span class="keyword">new</span> Node(x);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            curr_node = curr_node-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>相当于改成这样:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ptr p = root;</span><br><span class="line">p-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">// root-&gt;left == NULL? True.</span></span><br></pre></td></tr></table></figure>
+<p>从直接修改当前节点变成了修改当前节点的子节点, 保证了不会出现引用啥啥乱七八糟的问题.</p>
+<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p>这里较为复杂.</p>
+<p>首先找到该节点, 然后分三种情况讨论</p>
+<ol>
+<li>该节点是叶节点.</li>
+</ol>
+<p>直接删除.</p>
+<ol start="2">
+<li>该节点是链节点(只有一个儿子).</li>
+</ol>
+<p>用这个儿子代替它的位置就行.</p>
+<ol start="3">
+<li>该节点非叶非链.</li>
+</ol>
+<p>这种情况复杂一点, 一般是找到它的后继代替他的位置然后删掉后继.</p>
+<p><del>显然,</del>它的后继一定为链节点或叶节点, 删除后继很好删除.</p>
+<p>再用一下上面的图</p>
+<p><img src="https://i.loli.net/2018/11/23/5bf7de67267a8.png" alt="example1"></p>
+<p>现在我们要删除<code>19</code>, 只需要找到它的后继<code>23</code>, 将<code>19</code>这个节点的值赋为23后删除<code>23</code>节点即可.</p>
+<p>(顺便说一句: 有一个23没有变成<code>23</code>是有意义的, <code>23</code>是特指节点, 23指的是二十三这个数字.)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Simple_Delete</span><span class="params">(ptr&amp; curr_node)</span> <span class="comment">// 对应1, 2情况的节点删除</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(curr_node-&gt;left)</span><br><span class="line">        curr_node = curr_node-&gt;left;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        curr_node = curr_node-&gt;right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">int</span> x)</span> <span class="comment">// 删除值为x的节点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ptr curr_node = Find(x, root);</span><br><span class="line">    <span class="keyword">if</span>(curr_node-&gt;left <span class="keyword">and</span> curr_node-&gt;right)</span><br><span class="line">    &#123;</span><br><span class="line">        ptr temp = Find_Min(curr_node-&gt;right);</span><br><span class="line">        curr_node-&gt;val = temp-&gt;val;</span><br><span class="line">        Simple_Delete(temp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        Simple_Delete(curr_node);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然而同样的 <strong>代码完全错误</strong>- -</p>
+<p><del>请读者自行思考如何写出正确删除操作</del></p>
+<p>一些小提示:</p>
+<ul>
+<li><code>Find</code>函数返回值<strong>并未引用</strong>.</li>
+<li>可以像<code>Insert</code>函数的改正一样, 对当前节点的子节点进行操作, 而不是对当前节点操作.</li>
+<li>牺牲一小点效率, 写成<strong>递归形式</strong>.(这样对于参数的引用就非常好处理)</li>
+</ul>
+<p>偷个懒, 这个代码就不放了- -</p>
+<p>如果实在想不出来, 可以参照下面的<code>Splay</code>中的<strong>非递归形式</strong>和<code>Treap</code>中的<strong>递归形式</strong>.</p>
+<h4 id="前驱后继"><a href="#前驱后继" class="headerlink" title="前驱后继"></a>前驱后继</h4><p>定义请参照题面.</p>
+<p>要注意的是, 所查询元素<strong>可以不是当前树中的元素</strong>.</p>
+<p>即如果现在树中有<code>1, 22, 33</code>3个节点, 我可以查询<code>24</code>的后继(<code>33</code>)和前驱(<code>22</code>).</p>
+<p>两个操作差不多, 就只讲后继了.</p>
+<p>在<code>find</code>操作里面加点零件就可以了.</p>
+<p>定义<code>ret</code>为从根节点走到目前节点为止, 比所查询元素大的最小的元素.</p>
+<p>如果当前节点的值大于所查询元素, 更新<code>ret</code>为当前节点的值, 往左子树走;</p>
+<p>如果当前节点的值小于所查询元素, 直接往右子树走就行.</p>
+<p><del>原理自己想去</del></p>
+<p>前驱操作把左右和大于小于倒过来就差不多了.</p>
+<p>代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> Pre<span class="comment">/*predecessor*/</span>(<span class="keyword">int</span> val)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> ret;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(curr)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(val &gt; curr-&gt;val)</span><br><span class="line">        &#123;</span><br><span class="line">            ret = curr-&gt;val;</span><br><span class="line">            curr = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            curr = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> Suc<span class="comment">/*successor*/</span>(<span class="keyword">int</span> val)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">    <span class="keyword">register</span> _val ret;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(curr)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(val &lt; curr-&gt;val)</span><br><span class="line">        &#123;</span><br><span class="line">            ret = curr-&gt;val;</span><br><span class="line">            curr = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            curr = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>基本操作就讲这么多.</p>
+<h3 id="排名相关"><a href="#排名相关" class="headerlink" title="排名相关"></a>排名相关</h3><p>然而…</p>
+<blockquote>
+<p>??? 题目中的<code>3,4</code>操作呢?</p>
+</blockquote>
+<p>别急.</p>
+<p>刚刚讲的是最基础的<code>BST</code>, 真正要支持查询排名节点还需要维护一个东西, 叫<code>size</code>.</p>
+<p>这题因为有可重复元素, 还要维护一个东西, 叫<code>cnt</code>.</p>
+<p>分别解释一下:</p>
+<ul>
+<li><code>size</code>表示以当前节点为根的子树中节点的个数(包含重复元素).</li>
+<li><code>cnt</code>表示当前节点有多少个重复元素.(就是<code>val</code>一样, 然后累在一起)</li>
+</ul>
+<p>给个定义不够清楚, 还是上刚刚那个图</p>
+<p><img src="https://i.loli.net/2018/11/23/5bf7de67267a8.png" alt="example1"></p>
+<p><code>66</code>的<code>size</code>是10, <code>19</code>的<code>size</code>是6, <code>91</code>的<code>size</code>是3, <code>45</code>的<code>size</code>是4, <code>77</code>的<code>size</code>是1, 等等.</p>
+<p>这图里面元素不重复, 所以<code>cnt</code>没有体现</p>
+<p>如果我现在插入<code>19</code>, 它就不会新建节点, 而是使<code>19</code>的<code>cnt</code>++(同时, <code>19</code>和<code>66</code>的<code>size</code>也会++).</p>
+<p>维护了<code>size</code>域之后, 我们就可以着手做<code>3,4</code>操作了</p>
+<p>基础思想是分治.</p>
+<p>首先可以知道的是, 在一棵子树中, 根节点的排名大小取决于左子树的<code>size</code>.</p>
+<p>可以得出, 根节点的权值在这棵子树中的排名是一个闭区间: $[lsize+1,lsize+cnt]$.</p>
+<p>(为什么说是一个区间, 因为有重复元素. 题目里面明确讲了取最小排名.)</p>
+<p>(其中 $lsize$ 是左儿子的节点个数, $cnt$ 是当前节点的<code>cnt</code>)</p>
+<p>依据这个原理, 分别来做<code>3,4</code>操作:</p>
+<h4 id="查询排名第-k-的元素"><a href="#查询排名第-k-的元素" class="headerlink" title="查询排名第 $k$ 的元素"></a>查询排名第 $k$ 的元素</h4><p>其实排名为 $k$ 就是查找 $k$ 小.</p>
+<p>因为<code>BST</code>的中序遍历有序, 所以, 如果将一个<code>BST</code>执行中序遍历, 比当前节点小的数的个数就是左子树的<code>size</code>(这句话需要好好理解一下).</p>
+<p>总共三种情况:</p>
+<ol>
+<li>$lsize &lt; k \le lsize + cnt$</li>
+</ol>
+<p>要查找元素就是当前元素, 直接<code>return</code>即可.</p>
+<ol start="2">
+<li>$k \le lsize$</li>
+</ol>
+<p>说明要查找的节点在左子树中, 并且在左子树中还是排名第 $k$ (结合我前面说的, 想想为什么). 在左子树继续查找即可.</p>
+<ol start="3">
+<li>$k&gt;lsize+cnt$</li>
+</ol>
+<p>说明要查找的节点在右子树中, 并且在右子树的排名为 $k-lsize-cnt$ (同样结合我前面那一句话, 想想为什么). 将 $k$ 减去对应值之后再在右子树查找即可.</p>
+<p>代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> QK<span class="comment">/*Query Kth*/</span>(<span class="keyword">int</span> k)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(curr)</span><br><span class="line">    &#123;</span><br><span class="line">        size = Size(curr-&gt;son[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">if</span>(k &gt; size <span class="keyword">and</span> k &lt;= size + curr-&gt;cnt)</span><br><span class="line">            <span class="keyword">return</span> curr-&gt;val;</span><br><span class="line">        <span class="keyword">if</span>(k &lt;= size)</span><br><span class="line">            curr = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            k -= size + curr-&gt;cnt;</span><br><span class="line">            curr = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    assert(<span class="literal">false</span>); <span class="comment">// 正常的话会在while循环里面就return掉了, 如果执行到这里说明程序挂了, 这个指令会自动RE</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="查询元素排名"><a href="#查询元素排名" class="headerlink" title="查询元素排名"></a>查询元素排名</h4><p>(本题中保证所查询的元素现在一定存在).</p>
+<p>这和上述查找 $k$ 小的操作非常类似, 可以近似认为是互逆运算(其实它更好理解一些).</p>
+<p>过程和<code>find</code>差不多, 但是需要额外定义一个<code>k</code>, 表示从根节点遍历到目前为止, 比所查询元素大的元素个数(初始化为0).</p>
+<p>在<code>find</code>的过程中, 如果你需要往左走, 对于<code>k</code>值是无影响的; 而如果要往右走, 则<code>k</code>需要加上左子树的<code>size</code>和当前节点的<code>cnt</code>.</p>
+<p>结合代码理解一下(最后<code>k</code>还加上一个值, 是因为比查找到的节点小的数也包括了其左子树的<code>size</code>, 而在循环中是没有加上的):</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">int</span> QR<span class="comment">/*Query Rank*/</span>(<span class="keyword">int</span> val)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(curr-&gt;val != val)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(curr-&gt;val &lt; val)</span><br><span class="line">        &#123;</span><br><span class="line">            k += Size(curr-&gt;son[<span class="number">0</span>]) + curr-&gt;cnt;</span><br><span class="line">            curr = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            curr = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    k += Size(curr-&gt;son[<span class="number">0</span>]) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="平衡树引入"><a href="#平衡树引入" class="headerlink" title="平衡树引入"></a>平衡树引入</h3><p>经过刚刚的<del>一通乱讲</del>说明, 这道题已经可以做了, 但时间复杂度还无法保证.</p>
+<p><del>非常显然,</del><code>BST</code>各个操作的时间复杂度均为 $O(h)$. 其中 $h​$ 为二叉搜索树的高度.</p>
+<p>然而<code>BST</code>极其可能会退化成一条链, 或者说树深度过深, 导致 $h$ 趋近于 $n$, 显然每个操作 $O(n)$ 的复杂度是我们无法接受的.</p>
+<p>这个时候, 就需要我们的平衡树来救场了.</p>
+<p>其实平衡树的本质就是<code>BST</code>加上调整.</p>
+<p>调整一般有几种(OI用): <strong>旋转</strong>, <strong>重构</strong>, <strong>分裂合并</strong>.</p>
+<p>典型的代表就是 <code>Splay</code>, <code>替罪羊树</code>, <code>fhq Treap</code>.</p>
+<h2 id="Splay"><a href="#Splay" class="headerlink" title="Splay"></a>Splay</h2><p><code>Splay</code>是平衡树的一种.</p>
+<p>由<code>Tarjan</code>和<code>Daniel Sleator</code>开发.(感觉信息这方面哪里都能看见<code>Tarjan</code>…)</p>
+<p>它的核心操作只有一个:<code>Splay</code>(顾名思义, 伸展操作).</p>
+<h3 id="节点定义"><a href="#节点定义" class="headerlink" title="节点定义"></a>节点定义</h3><p><code>Splay</code>本质而言还是一棵树, 我们要先确定其节点要存放什么东西.</p>
+<p>相对<code>BST</code>的节点要存的东西其实也没多多少, 只是多了一个父指针指向父亲而已.</p>
+<p>(其实也有递归实现的无父指针版, 如果想学可以<a href="https://www.luogu.org/blog/user22890/solution-p3369" rel="external nofollow noopener noreferrer" target="_blank">参考这里</a>)</p>
+<p>先留个坑- -放个代码在这里2333</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**********************************************************</span></span><br><span class="line"><span class="comment"> * Author        : EndSaH</span></span><br><span class="line"><span class="comment"> * Email         : hjxhb1@gmail.com</span></span><br><span class="line"><span class="comment"> * Created Time  : 2018-12-11 19:26</span></span><br><span class="line"><span class="comment"> * FileName      : new.cpp</span></span><br><span class="line"><span class="comment"> * Website       : https://endsah.cf</span></span><br><span class="line"><span class="comment"> * *******************************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cassert&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Istream</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *ipos;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> :</span><br><span class="line">    Istream()</span><br><span class="line">    &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">        freopen(<span class="string">"new.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">        freopen(<span class="string">"new.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">        ipos = (<span class="keyword">char</span>*)mmap(<span class="literal">NULL</span>, lseek(<span class="number">0</span>, <span class="number">0</span>, SEEK_END), PROT_READ, MAP_PRIVATE, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Istream&amp; <span class="keyword">operator</span>&gt;&gt;(<span class="keyword">int</span>&amp; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">register</span> <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">        n = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(*ipos))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(*ipos == <span class="string">'-'</span>)</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">            ++ipos;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(n = (n &lt;&lt; <span class="number">3</span>) + (n &lt;&lt; <span class="number">1</span>) + (*ipos++ &amp; <span class="number">15</span>), <span class="built_in">isdigit</span>(*ipos));</span><br><span class="line">        <span class="keyword">if</span>(flag)</span><br><span class="line">            n = -n;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; in;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> _obuf[<span class="number">1</span> &lt;&lt; <span class="number">20</span>], _stk[<span class="number">20</span>];</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ostream</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *opos, *oend, *stkpos;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> :</span><br><span class="line">    Ostream()</span><br><span class="line">    &#123;</span><br><span class="line">        oend = (opos = _obuf) + (<span class="number">1</span> &lt;&lt; <span class="number">20</span>) - <span class="number">1</span>;</span><br><span class="line">        stkpos = _stk;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~Ostream()</span><br><span class="line">    &#123; fwrite(_obuf, <span class="number">1</span>, opos - _obuf, <span class="built_in">stdout</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Putchar</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        *opos = ch;</span><br><span class="line">        <span class="keyword">if</span>(opos == oend)</span><br><span class="line">        &#123;</span><br><span class="line">            fwrite(_obuf, <span class="number">1</span>, <span class="number">1</span> &lt;&lt; <span class="number">20</span>, <span class="built_in">stdout</span>);</span><br><span class="line">            opos = _obuf;</span><br><span class="line">        &#125;</span><br><span class="line">        ++opos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Ostream&amp; <span class="keyword">operator</span>&lt;&lt;(<span class="keyword">int</span> n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Putchar(<span class="string">'-'</span>);</span><br><span class="line">            n = -n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            *++stkpos = n % <span class="number">10</span> ^ <span class="number">48</span>;</span><br><span class="line">            n /= <span class="number">10</span>;</span><br><span class="line">        &#125; <span class="keyword">while</span>(n);</span><br><span class="line">        <span class="keyword">while</span>(stkpos != _stk)</span><br><span class="line">            Putchar(*stkpos--);</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Ostream&amp; <span class="keyword">operator</span>&lt;&lt;(<span class="keyword">char</span> c)</span><br><span class="line">    &#123;</span><br><span class="line">        Putchar(c);</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; out;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Chkmin</span><span class="params">(_Tp&amp; x, <span class="keyword">const</span> _Tp&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> x &gt; y ? x = y, <span class="literal">true</span> : <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Chkmax</span><span class="params">(_Tp&amp; x, <span class="keyword">const</span> _Tp&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> x &lt; y ? x = y, <span class="literal">true</span> : <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _val&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Splay_Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">typedef</span> Splay_Node &lt;_val&gt;* ptr;</span><br><span class="line"></span><br><span class="line">    ptr son[<span class="number">2</span>], fa;</span><br><span class="line">    _val val;</span><br><span class="line">    <span class="keyword">int</span> size, cnt;</span><br><span class="line"></span><br><span class="line">    Splay_Node(<span class="keyword">const</span> _val&amp; val, ptr fa) : val(val), fa(fa)</span><br><span class="line">    &#123;</span><br><span class="line">        size = cnt = <span class="number">1</span>;</span><br><span class="line">        son[<span class="number">0</span>] = son[<span class="number">1</span>] = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _val&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Splay_Tree</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">typedef</span> Splay_Node &lt;_val&gt;* ptr;</span><br><span class="line"></span><br><span class="line">    ptr root;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span> :</span><br><span class="line">    Splay_Tree()</span><br><span class="line">    &#123; root = <span class="literal">NULL</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> Ident<span class="comment">/*Identify*/</span>(ptr x)</span><br><span class="line">    &#123; <span class="keyword">return</span> x-&gt;fa == <span class="literal">NULL</span> ? <span class="number">0</span> : x-&gt;fa-&gt;son[<span class="number">1</span>] == x; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Size</span><span class="params">(ptr x)</span></span></span><br><span class="line"><span class="function">    </span>&#123; <span class="keyword">return</span> x == <span class="literal">NULL</span> ? <span class="number">0</span> : x-&gt;size; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">(ptr x)</span></span></span><br><span class="line"><span class="function">    </span>&#123; x-&gt;size = Size(x-&gt;son[<span class="number">0</span>]) + Size(x-&gt;son[<span class="number">1</span>]) + x-&gt;cnt; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Link</span><span class="params">(ptr fa, ptr son, <span class="keyword">int</span> dir<span class="comment">/*direction*/</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!fa)</span><br><span class="line">            root = son;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            fa-&gt;son[dir] = son;</span><br><span class="line">        <span class="keyword">if</span>(son)</span><br><span class="line">            son-&gt;fa = fa;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Rotate</span><span class="params">(ptr x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">register</span> ptr fa = x-&gt;fa;</span><br><span class="line">        <span class="keyword">register</span> <span class="keyword">int</span> dir = Ident(x);</span><br><span class="line"></span><br><span class="line">        Link(fa-&gt;fa, x, Ident(fa));</span><br><span class="line">        Link(fa, x-&gt;son[dir ^ <span class="number">1</span>], dir);</span><br><span class="line">        Link(x, fa, dir ^ <span class="number">1</span>);</span><br><span class="line">        Update(fa);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Splay</span><span class="params">(ptr x, ptr goal)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">register</span> ptr fa;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(x-&gt;fa != goal)</span><br><span class="line">        &#123;</span><br><span class="line">            fa = x-&gt;fa;</span><br><span class="line">            <span class="keyword">if</span>(fa-&gt;fa == goal)</span><br><span class="line">            &#123;</span><br><span class="line">                Rotate(x);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(Ident(fa) ^ Ident(x))</span><br><span class="line">                Rotate(x);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                Rotate(fa);</span><br><span class="line">            Rotate(x);</span><br><span class="line">        &#125;</span><br><span class="line">        Update(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">const</span> _val&amp; val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">        &#123;</span><br><span class="line">            root = <span class="keyword">new</span> Splay_Node&lt;_val&gt;(val, <span class="literal">NULL</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">        <span class="keyword">register</span> <span class="keyword">int</span> dir = val &gt; curr-&gt;val;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ++curr-&gt;size;</span><br><span class="line">            <span class="keyword">if</span>(curr-&gt;val == val)</span><br><span class="line">            &#123;</span><br><span class="line">                ++curr-&gt;cnt;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            dir = val &gt; curr-&gt;val;</span><br><span class="line">            <span class="keyword">if</span>(curr-&gt;son[dir])</span><br><span class="line">                curr = curr-&gt;son[dir];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                curr-&gt;son[dir] = <span class="keyword">new</span> Splay_Node&lt;_val&gt;(val, curr);</span><br><span class="line">                Splay(curr-&gt;son[dir], <span class="literal">NULL</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">const</span> _val&amp; val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">register</span> ptr curr<span class="comment">/*current*/</span> = root, pre<span class="comment">/*predecessor*/</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(curr-&gt;val != val)</span><br><span class="line">            curr = curr-&gt;son[val &gt; curr-&gt;val];</span><br><span class="line">        Splay(curr, <span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">if</span>(curr-&gt;cnt &gt; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            --curr-&gt;cnt, --curr-&gt;size;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        pre = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(pre)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(pre-&gt;son[<span class="number">1</span>])</span><br><span class="line">                pre = pre-&gt;son[<span class="number">1</span>];</span><br><span class="line">            Splay(pre, curr);</span><br><span class="line">            root = pre;</span><br><span class="line">            root-&gt;fa = <span class="literal">NULL</span>, root-&gt;son[<span class="number">1</span>] = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(root-&gt;son[<span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                root-&gt;son[<span class="number">1</span>]-&gt;fa = root;</span><br><span class="line">                root-&gt;size += root-&gt;son[<span class="number">1</span>]-&gt;size;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            root = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(root)</span><br><span class="line">                root-&gt;fa = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">delete</span> curr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> QR<span class="comment">/*Query Rank*/</span>(<span class="keyword">const</span> _val&amp; val)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">        <span class="keyword">register</span> <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(curr-&gt;val != val)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(curr-&gt;val &lt; val)</span><br><span class="line">            &#123;</span><br><span class="line">                k += Size(curr-&gt;son[<span class="number">0</span>]) + curr-&gt;cnt;</span><br><span class="line">                curr = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                curr = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        k += Size(curr-&gt;son[<span class="number">0</span>]) + <span class="number">1</span>;</span><br><span class="line">        Splay(curr, <span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">return</span> k;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _val QK<span class="comment">/*Query Kth*/</span>(<span class="keyword">int</span> k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">        <span class="keyword">register</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(curr)</span><br><span class="line">        &#123;</span><br><span class="line">            size = Size(curr-&gt;son[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">if</span>(k &gt; size <span class="keyword">and</span> k &lt;= size + curr-&gt;cnt)</span><br><span class="line">                <span class="keyword">return</span> curr-&gt;val;</span><br><span class="line">            <span class="keyword">if</span>(k &lt;= size)</span><br><span class="line">                curr = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                k -= size + curr-&gt;cnt;</span><br><span class="line">                curr = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        assert(<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _<span class="function">val <span class="title">Pre</span><span class="params">(<span class="keyword">const</span> _val&amp; val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">        <span class="keyword">register</span> _val ret;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(curr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(val &gt; curr-&gt;val)</span><br><span class="line">            &#123;</span><br><span class="line">                ret = curr-&gt;val;</span><br><span class="line">                curr = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                curr = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _val Suc<span class="comment">/*successor*/</span>(<span class="keyword">const</span> _val&amp; val)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">register</span> ptr curr = root;</span><br><span class="line">        <span class="keyword">register</span> _val ret;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(curr)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(val &lt; curr-&gt;val)</span><br><span class="line">            &#123;</span><br><span class="line">                ret = curr-&gt;val;</span><br><span class="line">                curr = curr-&gt;son[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                curr = curr-&gt;son[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> n, opt, x;</span><br><span class="line">    Splay_Tree&lt;<span class="keyword">int</span>&gt; wib;</span><br><span class="line"></span><br><span class="line">    in &gt;&gt; n;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        in &gt;&gt; opt &gt;&gt; x;</span><br><span class="line">        <span class="keyword">switch</span>(opt)</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span> :</span><br><span class="line">            wib.Insert(x);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span> :</span><br><span class="line">            wib.Delete(x);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span> :</span><br><span class="line">            out &lt;&lt; wib.QR(x) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span> :</span><br><span class="line">            out &lt;&lt; wib.QK(x) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span> :</span><br><span class="line">            out &lt;&lt; wib.Pre(x) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span> :</span><br><span class="line">            out &lt;&lt; wib.Suc(x) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Treap"><a href="#Treap" class="headerlink" title="Treap"></a>Treap</h2><p><code>Treap</code>是一种相对较为随机的平衡树.</p>
+<p>具体来说, 就是对每个节点赋一个优先级. 保证不破坏其二叉查找树的本质的同时, 使节点按所赋的优先级排为堆序.</p>
+<p>继续留坑(代码比较丑, 到时候重写一下再放上来)</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/平衡树/" rel="tag"># 平衡树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ZJOI2007-报表统计.html" rel="next" title="[ZJOI2007]报表统计">
+                <i class="fa fa-chevron-left"></i> [ZJOI2007]报表统计
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Luogu-Tweetuzki爱序列.html" rel="prev" title="[Luogu]Tweetuzki爱序列">
+                [Luogu]Tweetuzki爱序列 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="EndSaH">
+            
+              <p class="site-author-name" itemprop="name">EndSaH</p>
+              <p class="site-description motion-element" itemprop="description">Life is what you make it.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/endsah" title="GitHub &rarr; https://github.com/endsah" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.zhihu.com/people/endsah" title="知乎 &rarr; https://www.zhihu.com/people/endsah" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-comments"></i>知乎</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gongchen618.github.io" title="https://gongchen618.github.io" rel="external nofollow noopener noreferrer" target="_blank">GCCCCCCCCC</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://muqzzz.cf" title="https://muqzzz.cf" rel="external nofollow noopener noreferrer" target="_blank">MuQiuFeng</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cnblogs.com/luoshuitianyi" title="https://cnblogs.com/luoshuitianyi" rel="external nofollow noopener noreferrer" target="_blank">LuoShuiTianYi</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hk-cnyali.com/" title="https://hk-cnyali.com/" rel="external nofollow noopener noreferrer" target="_blank">hk-cnyali</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/xunzhen/" title="https://www.cnblogs.com/xunzhen/" rel="external nofollow noopener noreferrer" target="_blank">XunZhen</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xszq.tk/" title="https://xszq.tk/" rel="external nofollow noopener noreferrer" target="_blank">xszq</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://qrsikno.cnblogs.com/" title="https://qrsikno.cnblogs.com/" rel="external nofollow noopener noreferrer" target="_blank">qrsikno</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yzp-blog.cf/" title="https://yzp-blog.cf/" rel="external nofollow noopener noreferrer" target="_blank">yzp</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cnblogs.com/list1" title="https://cnblogs.com/list1" rel="external nofollow noopener noreferrer" target="_blank">HJK AK IOI</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#text-Foreword"><span class="nav-number">1.</span> <span class="nav-text">$\text{Foreword}$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡树基础之BST"><span class="nav-number">3.1.</span> <span class="nav-text">平衡树基础之BST</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BST定义"><span class="nav-number">3.1.1.</span> <span class="nav-text">BST定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几个基本操作"><span class="nav-number">3.1.2.</span> <span class="nav-text">几个基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查找特定的值"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">查找特定的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找最值"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">查找最值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入节点"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">插入节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除节点"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">删除节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前驱后继"><span class="nav-number">3.1.2.5.</span> <span class="nav-text">前驱后继</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排名相关"><span class="nav-number">3.1.3.</span> <span class="nav-text">排名相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询排名第-k-的元素"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">查询排名第 $k$ 的元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询元素排名"><span class="nav-number">3.1.3.2.</span> <span class="nav-text">查询元素排名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平衡树引入"><span class="nav-number">3.1.4.</span> <span class="nav-text">平衡树引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Splay"><span class="nav-number">3.2.</span> <span class="nav-text">Splay</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#节点定义"><span class="nav-number">3.2.1.</span> <span class="nav-text">节点定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Treap"><span class="nav-number">3.3.</span> <span class="nav-text">Treap</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="external nofollow noopener noreferrer" target="_blank"> </a>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fire"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EndSaH</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'qVrkGRUo2bBsLsDkMW8bIrRg-gzGzoHsz',
+    appKey: 'wTn4qIWYgankxHTn06hxBXMk',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'; 
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+<!-- 自定义的js文件 -->
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+</body>
+</html>
