@@ -90,7 +90,7 @@
   
     
     
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Courier:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monospace:300,300italic,400,400italic,700,700italic|Monospace:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
   
 
 
@@ -152,7 +152,7 @@
 <meta name="keywords" content="博客, OI">
 <meta property="og:type" content="website">
 <meta property="og:title" content="k维空间">
-<meta property="og:url" content="https://endsah.cf/index.html">
+<meta property="og:url" content="http://endsah.cf/index.html">
 <meta property="og:site_name" content="k维空间">
 <meta property="og:description" content="Life is what you make it.">
 <meta property="og:locale" content="zh-CN">
@@ -165,7 +165,7 @@
 
 
 
-  <link rel="canonical" href="https://endsah.cf/">
+  <link rel="canonical" href="http://endsah.cf/">
 
 
 
@@ -425,7 +425,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://endsah.cf/莫比乌斯反演.html">
+    <link itemprop="mainEntityOfPage" href="http://endsah.cf/posts/53012/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EndSaH">
@@ -445,7 +445,195 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/莫比乌斯反演.html" class="post-title-link" itemprop="url">莫比乌斯反演</a>
+                <a href="/posts/53012/" class="post-title-link" itemprop="url">[51nod1952]栈</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-11 21:12:41 / 修改时间：21:54:44" itemprop="dateCreated datePublished" datetime="2019-03-11T21:12:41+08:00">2019-03-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/posts/53012/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/53012/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <script type="text/javascript" src="/js/src/bai.js"></script>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1952" rel="external nofollow noopener noreferrer" target="_blank">题面传送门</a></p>
+<p>这里讲的是有别于单调栈和单调队列的做法。</p>
+<p>要想看这种做法的，请转至 <a href="https://www.cnblogs.com/qrsikno/p/10491661.html" rel="external nofollow noopener noreferrer" target="_blank">yongshi的文章</a></p>
+<h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>要求维护一个异常的栈。</p>
+<p>$n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。</p>
+<p>$n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。</p>
+<p>时限1.5s，输入由参数产生，输出答案对 $10^9 + 7$ 取模的值。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/53012/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://endsah.cf/posts/61065/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EndSaH">
+      <meta itemprop="description" content="Life is what you make it.">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="k维空间">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/61065/" class="post-title-link" itemprop="url">莫比乌斯反演</a>
               
             
           </h2>
@@ -523,8 +711,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/莫比乌斯反演.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/莫比乌斯反演.html" itemprop="commentCount"></span>
+                <a href="/posts/61065/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/61065/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -560,7 +748,7 @@
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/莫比乌斯反演.html#more" rel="contents">
+              <a class="btn" href="/posts/61065/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -620,7 +808,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://endsah.cf/Luogu-Tweetuzki爱序列.html">
+    <link itemprop="mainEntityOfPage" href="http://endsah.cf/posts/28024/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EndSaH">
@@ -640,208 +828,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/Luogu-Tweetuzki爱序列.html" class="post-title-link" itemprop="url">[Luogu]Tweetuzki爱序列</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-12 21:22:40" itemprop="dateCreated datePublished" datetime="2018-12-12T21:22:40+08:00">2018-12-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-25 22:06:39" itemprop="dateModified" datetime="2019-02-25T22:06:39+08:00">2019-02-25</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/Luogu-Tweetuzki爱序列.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/Luogu-Tweetuzki爱序列.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>题面传送门: <a href="https://www.luogu.org/problemnew/show/P5080" rel="external nofollow noopener noreferrer" target="_blank">Luogu-5080</a></p>
-<p>洛咕里面有人发了跟我类似的题解了- -</p>
-<p>用这篇题解来纪念我想出来但是打挂成 $50$ 的 $100pts$</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定序列 $a_1, a_2, \dots a_n$.</p>
-<p>在原数列中任取 $k$ 个数, 排列组合成 $b_1,b_2, \dots b_k$, 使得</p>
-<p>$$<br>\forall i \in [1,k), b_i=2b_{i-1}\ or\ b_i=\frac{b_{i-1}}{3}(3|b_{i-1})<br>$$</p>
-<p>$(3|b_{i-1} \Longleftrightarrow b_{i-1}\ \text{mod}\ 3=0)$</p>
-<p>求出最大的 $k$, 并输出这个序列.</p>
-<p>$n \le 10^5, 3 \le a_i \le 10^{18}$.</p>
-<p><code>Special Judge</code>.</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/Luogu-Tweetuzki爱序列.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://endsah.cf/模板-普通平衡树.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EndSaH">
-      <meta itemprop="description" content="Life is what you make it.">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="k维空间">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/模板-普通平衡树.html" class="post-title-link" itemprop="url">[模板]普通平衡树</a>
+                <a href="/posts/28024/" class="post-title-link" itemprop="url">[模板]普通平衡树</a>
               
             
           </h2>
@@ -919,8 +906,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/模板-普通平衡树.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/模板-普通平衡树.html" itemprop="commentCount"></span>
+                <a href="/posts/28024/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/28024/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -969,7 +956,7 @@
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/模板-普通平衡树.html#more" rel="contents">
+              <a class="btn" href="/posts/28024/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1029,7 +1016,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://endsah.cf/ZJOI2007-报表统计.html">
+    <link itemprop="mainEntityOfPage" href="http://endsah.cf/posts/13447/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EndSaH">
@@ -1049,7 +1036,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/ZJOI2007-报表统计.html" class="post-title-link" itemprop="url">[ZJOI2007]报表统计</a>
+                <a href="/posts/13447/" class="post-title-link" itemprop="url">[ZJOI2007]报表统计</a>
               
             
           </h2>
@@ -1127,8 +1114,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/ZJOI2007-报表统计.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/ZJOI2007-报表统计.html" itemprop="commentCount"></span>
+                <a href="/posts/13447/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/13447/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1172,7 +1159,7 @@
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/ZJOI2007-报表统计.html#more" rel="contents">
+              <a class="btn" href="/posts/13447/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1232,7 +1219,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://endsah.cf/NOIP2018游记.html">
+    <link itemprop="mainEntityOfPage" href="http://endsah.cf/posts/53593/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EndSaH">
@@ -1252,7 +1239,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/NOIP2018游记.html" class="post-title-link" itemprop="url">NOIP2018游记</a>
+                <a href="/posts/53593/" class="post-title-link" itemprop="url">NOIP2018游记</a>
               
             
           </h2>
@@ -1330,8 +1317,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/NOIP2018游记.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/NOIP2018游记.html" itemprop="commentCount"></span>
+                <a href="/posts/53593/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/53593/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1367,7 +1354,7 @@
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/NOIP2018游记.html#more" rel="contents">
+              <a class="btn" href="/posts/53593/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1427,7 +1414,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://endsah.cf/Hello-World.html">
+    <link itemprop="mainEntityOfPage" href="http://endsah.cf/posts/22462/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EndSaH">
@@ -1447,7 +1434,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/Hello-World.html" class="post-title-link" itemprop="url">Hello World!</a>
+                <a href="/posts/22462/" class="post-title-link" itemprop="url">Hello World!</a>
               
             
           </h2>
@@ -1525,8 +1512,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/Hello-World.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/Hello-World.html" itemprop="commentCount"></span>
+                <a href="/posts/22462/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/22462/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1692,7 +1679,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1742,7 +1731,7 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://gongchen618.github.io" title="https://gongchen618.github.io" rel="external nofollow noopener noreferrer" target="_blank">GCCCCCCCCC</a>
+                    <a href="https://gccccccc.gitee.io/blog/" title="https://gccccccc.gitee.io/blog/" rel="external nofollow noopener noreferrer" target="_blank">GCCCCCCCCC</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
@@ -1876,7 +1865,7 @@
     
     
   
-  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
 
 
 
