@@ -90,7 +90,7 @@
   
     
     
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monospace:300,300italic,400,400italic,700,700italic|Monospace:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu Mono:300,300italic,400,400italic,700,700italic|Monospace:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
   
 
 
@@ -158,7 +158,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://images2017.cnblogs.com/blog/1101696/201802/1101696-20180211213536607-322408834.png">
 <meta property="og:image" content="https://cdn.luogu.org/upload/pic/48846.png">
-<meta property="og:updated_time" content="2019-03-24T13:14:09.162Z">
+<meta property="og:updated_time" content="2019-03-25T00:10:49.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FFT简洁笔记">
 <meta name="twitter:description" content="前言主要学自 Menci 的博客 不讲 $\text{FFT}$，这里只是讲一些其他的东西以及一些例题">
@@ -471,12 +471,24 @@
                 
               
 
-              <time title="创建时间：2019-03-24 18:56:27 / 修改时间：21:14:09" itemprop="dateCreated datePublished" datetime="2019-03-24T18:56:27+08:00">2019-03-24</time>
+              <time title="创建时间：2019-03-24 18:56:27" itemprop="dateCreated datePublished" datetime="2019-03-24T18:56:27+08:00">2019-03-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-25 08:10:49" itemprop="dateModified" datetime="2019-03-25T08:10:49+08:00">2019-03-25</time>
               
             
           </span>
@@ -546,7 +558,7 @@
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>主要学自 <a href="https://oi.men.ci/fft-notes/" rel="external nofollow noopener noreferrer" target="_blank">Menci 的博客</a></p>
 <p><strong>不讲 $\text{FFT}$，这里只是讲一些其他的东西以及一些例题</strong></p>
 <a id="more"></a>
-<h1 id="定义相关"><a href="#定义相关" class="headerlink" title="定义相关"></a>定义相关</h1><h2 id="多项式乘法本质"><a href="#多项式乘法本质" class="headerlink" title="多项式乘法本质"></a>多项式乘法本质</h2><p>$$<br>C_i = \sum _{j = 0} ^i A_j B_{i - j}<br>$$</p>
+<h1 id="定义相关"><a href="#定义相关" class="headerlink" title="定义相关"></a>定义相关</h1><h2 id="多项式乘法本质"><a href="#多项式乘法本质" class="headerlink" title="多项式乘法本质"></a>多项式乘法本质</h2><p>$$<br>C _i = \sum _{j = 0} ^i A _j B _{i - j}<br>$$</p>
 <p>其中 $A, B, C$ 表示多项式的系数集合，$i$ 表示为第 $i$ 次项。</p>
 <p>若没有第 $i$ 次项，系数视为 $0$。</p>
 <h2 id="复数乘法"><a href="#复数乘法" class="headerlink" title="复数乘法"></a>复数乘法</h2><p>$$<br>\begin{aligned}<br>&amp; (a + bi)(c + di) \\<br>=&amp; ac + adi + bci + bdi^2 \\<br>=&amp; ac + (ad + bc)i - bd \\<br>=&amp; (ac - bd) + (ad + bc)i<br>\end{aligned}<br>$$</p>
@@ -567,7 +579,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tmp = Omega(nn, flag * i) * curr[i + m];</span><br><span class="line">curr[i + m] = curr[i] - tmp, curr[i] += tmp;</span><br></pre></td></tr></table></figure>
 <p>其中 <code>flag</code> 表示其为 $\text{DFT}$ ( <code>1</code> ) 还是 $\text{IDFT}$ ( <code>-1</code> )。</p>
 <p>假设现在正在进行 $\text{DFT}$，那么代码抽出来看就是：</p>
-<p>$$<br>\begin{aligned}<br>t &amp;\gets \omega _n ^k \times a _{k + \frac n 2} \\<br>a _{k + \frac n 2} &amp;\gets a _k - t \\<br>a _k &amp;\gets a _k + t<br>\end{aligned}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>t &amp;\gets \omega _n ^k \times a _{k + \frac n 2} \\<br>a _{k + \frac n 2} &amp;\gets a_k - t \\<br>a _k &amp;\gets a_k + t<br>\end{aligned}<br>$$</p>
 <p>省去了之前需要复制数组的麻烦。</p>
 <p>这一过程被称为<strong>蝴蝶操作</strong>。</p>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="【模板】多项式乘法"><a href="#【模板】多项式乘法" class="headerlink" title="【模板】多项式乘法"></a><a href="https://www.luogu.org/problemnew/show/P3803" rel="external nofollow noopener noreferrer" target="_blank">【模板】多项式乘法</a></h2><p>略。</p>
@@ -586,8 +598,8 @@
 <p>则上式可以变为：</p>
 <p>$$<br>\begin{aligned}<br>E_j<br>&amp;= \sum _{i = 0} ^{j - 1} \frac {q_i} {(i - j)^2} - \sum _{i = j + 1} ^{n - 1} \frac {q_i} {(i - j)^2} \\<br>&amp;= \sum _{i = 0} ^{j} {q_i} g _{j - i} - \sum _{i = j} ^{n - 1} {q_i} g _{i - j}<br>\end{aligned}<br>$$</p>
 <p>（$j - 1$ 变为 $j$ 是为了形式变得和多项式乘法一样，实际上 $j = i$ 时因 $g_0 = 0$ 不会对答案产生贡献<del>才不是我打错了</del>）</p>
-<p>回忆下开头说的多项式乘法本质，可以发现减号前面的式子就是卷积形式了（$i$ 可以从 $0$ 开始，没有影响）；至于后面，可以用一张图来感性理解：</p>
-<p><img src="https://cdn.luogu.org/upload/pic/48846.png" alt="来自GoldenPotato dalao的博客">]</p>
+<p>回忆下开头说的多项式乘法本质，可以发现减号前面的式子就是卷积形式了；至于后面，可以用一张图来感性理解：</p>
+<p><img src="https://cdn.luogu.org/upload/pic/48846.png" alt="来自GoldenPotato dalao的博客"></p>
 <p>（来自<a href="https://www.cnblogs.com/GoldenPotato/p/10288217.html" rel="external nofollow noopener noreferrer" target="_blank">GoldenPotato dalao的博客</a>）</p>
 <p>如果要理性理解的话，请继续看：</p>
 <p>考虑将 $q$ 反向变为 $q’$，即令 $q’ _{n - i - 1} = q _i$。</p>
@@ -986,12 +998,6 @@
 
 
 
-
-  
-    
-    
-  
-  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
 
 
 
