@@ -78,6 +78,12 @@
   
 
   
+    
+      
+    
+
+    
+  
 
   
     
@@ -90,7 +96,7 @@
   
     
     
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu Mono:300,300italic,400,400italic,700,700italic|Monospace:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu Mono:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic|Ubuntu Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
   
 
 
@@ -148,18 +154,18 @@
 
 
 
-  <meta name="description" content="前言题面传送门 这里讲的是有别于单调栈和单调队列的做法。 要想看这种做法的，请转至 yongshi的文章 题意要求维护一个异常的栈。 $n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。 $n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。 时限1.5s，输入由参数产生，输出答案对 $10^9 + 7$ 取模的值。">
+  <meta name="description" content="前言题面传送门 这里讲的是有别于单调栈和单调队列的做法。 要想看这种做法的，请转至 yongshi的文章 题意要求维护一个异常的栈。 $n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。 $n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。 时限1.5s，输入由参数产生，输出答案的和对 $10^9 + 7$ 取模的值">
 <meta name="keywords" content="栈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[51nod1952]栈">
 <meta property="og:url" content="http://endsah.cf/posts/53012/index.html">
 <meta property="og:site_name" content="k维空间">
-<meta property="og:description" content="前言题面传送门 这里讲的是有别于单调栈和单调队列的做法。 要想看这种做法的，请转至 yongshi的文章 题意要求维护一个异常的栈。 $n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。 $n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。 时限1.5s，输入由参数产生，输出答案对 $10^9 + 7$ 取模的值。">
+<meta property="og:description" content="前言题面传送门 这里讲的是有别于单调栈和单调队列的做法。 要想看这种做法的，请转至 yongshi的文章 题意要求维护一个异常的栈。 $n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。 $n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。 时限1.5s，输入由参数产生，输出答案的和对 $10^9 + 7$ 取模的值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-11T13:54:44.157Z">
+<meta property="og:updated_time" content="2019-03-28T06:26:55.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[51nod1952]栈">
-<meta name="twitter:description" content="前言题面传送门 这里讲的是有别于单调栈和单调队列的做法。 要想看这种做法的，请转至 yongshi的文章 题意要求维护一个异常的栈。 $n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。 $n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。 时限1.5s，输入由参数产生，输出答案对 $10^9 + 7$ 取模的值。">
+<meta name="twitter:description" content="前言题面传送门 这里讲的是有别于单调栈和单调队列的做法。 要想看这种做法的，请转至 yongshi的文章 题意要求维护一个异常的栈。 $n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。 $n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。 时限1.5s，输入由参数产生，输出答案的和对 $10^9 + 7$ 取模的值">
 
 
 
@@ -468,12 +474,24 @@
                 
               
 
-              <time title="创建时间：2019-03-11 21:12:41 / 修改时间：21:54:44" itemprop="dateCreated datePublished" datetime="2019-03-11T21:12:41+08:00">2019-03-11</time>
+              <time title="创建时间：2019-03-11 21:12:41" itemprop="dateCreated datePublished" datetime="2019-03-11T21:12:41+08:00">2019-03-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-28 14:26:55" itemprop="dateModified" datetime="2019-03-28T14:26:55+08:00">2019-03-28</time>
               
             
           </span>
@@ -546,8 +564,7 @@
 <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>要求维护一个异常的栈。</p>
 <p>$n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。</p>
 <p>$n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。</p>
-<p>时限1.5s，输入由参数产生，输出答案对 $10^9 + 7$ 取模的值。</p>
-<a id="more"></a>
+<p>时限1.5s，输入由参数产生，输出答案的和对 $10^9 + 7$ 取模的值。</p>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>显然只能 $\mathcal O(n)$。</p>
 <p>考虑没有栈尾插入的时候怎么做。</p>
 <p>不需要什么单调栈 + 普通栈，直接用<strong>一个栈记录前缀最大值</strong>就行了，删除就直接让栈顶指针前移一格。</p>
@@ -569,7 +586,7 @@
 <p><del>总比想破头去想单调队列 + 单调栈好</del></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>指针可能不太友好，不过差不多啦- -凑合着看看吧</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**********************************************************</span></span><br><span class="line"><span class="comment"> * Author        : EndSaH</span></span><br><span class="line"><span class="comment"> * Email         : hjxhb1@gmail.com</span></span><br><span class="line"><span class="comment"> * Created Time  : 2019-03-11 12:45</span></span><br><span class="line"><span class="comment"> * FileName      : 1952.cpp</span></span><br><span class="line"><span class="comment"> * Website       : https://endsah.cf</span></span><br><span class="line"><span class="comment"> * *******************************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cassert&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(...) fprintf(stderr, __VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Debug(s) debug(<span class="meta-string">"The message in line %d, Function %s: %s\n"</span>, __LINE__, __FUNCTION__, s)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar() (ipos == iend and (iend = (ipos = _ibuf) + fread(_ibuf, 1, __bufsize, stdin), ipos == iend) ? EOF : *ipos++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> putchar(ch) (opos == oend ? fwrite(_obuf, 1, __bufsize, stdout), opos = _obuf : 0, *opos++ = (ch))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __bufsize (1 &lt;&lt; 21)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> _ibuf[__bufsize], _obuf[__bufsize], _stk[<span class="number">20</span>];</span><br><span class="line"><span class="keyword">char</span> *ipos = _ibuf, *iend = _ibuf, *opos = _obuf, *oend = _obuf + __bufsize, *stkpos = _stk;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">END</span></span></span><br><span class="line"><span class="class">&#123;</span> ~END() &#123; fwrite(_obuf, <span class="number">1</span>, opos - _obuf, <span class="built_in">stdout</span>); &#125; &#125;</span><br><span class="line">__;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(ch = getchar()));</span><br><span class="line">    <span class="keyword">while</span> (x = (x &lt;&lt; <span class="number">3</span>) + (x &lt;&lt; <span class="number">1</span>) + (ch &amp; <span class="number">15</span>), <span class="built_in">isdigit</span>(ch = getchar()));</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _INT&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(_INT x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (*++stkpos = x % <span class="number">10</span> ^ <span class="number">48</span>, x /= <span class="number">10</span>, x);</span><br><span class="line">    <span class="keyword">while</span> (stkpos != _stk)</span><br><span class="line">        <span class="built_in">putchar</span>(*stkpos--);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Chkmax</span><span class="params">(_Tp&amp; x, <span class="keyword">const</span> _Tp&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> x &lt; y ? x = y, <span class="literal">true</span> : <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Chkmin</span><span class="params">(_Tp&amp; x, <span class="keyword">const</span> _Tp&amp; y)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> x &gt; y ? x = y, <span class="literal">true</span> : <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxN = <span class="number">1e7</span> + <span class="number">2</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, A, B, C, xi, a, aa, b, bb, MOD, ans, max;</span><br><span class="line"><span class="keyword">int</span> stk1[maxN], stk2[maxN], *pos1 = stk1, *pos2 = stk2;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Mod</span><span class="params">(<span class="keyword">int</span>&amp; x)</span></span></span><br><span class="line"><span class="function"></span>&#123; x &gt;= mod ? x -= mod : <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Getopt</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    xi = ((LL)xi * aa + bb) % MOD;</span><br><span class="line">    <span class="keyword">if</span> ((pos1 - stk1) + (pos2 - stk2) &lt;= <span class="number">1</span>)</span><br><span class="line">        a = <span class="number">0</span>, b = xi;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> tmp = xi % (A + B + C);</span><br><span class="line">        <span class="keyword">if</span> (tmp &lt; A)</span><br><span class="line">            a = <span class="number">0</span>, b = xi;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (tmp &lt; A + B)</span><br><span class="line">            a = <span class="number">1</span>, b = xi;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            a = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"1952.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"1952.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    n = read(), A = read(), B = read(), C = read();</span><br><span class="line">    xi = read(), aa = read(), bb = read(), MOD = read();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        Getopt();</span><br><span class="line">        <span class="keyword">switch</span> (a)</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0</span> :</span><br><span class="line">            *++pos1 = b;</span><br><span class="line">            Chkmax(*pos1, *(pos1 - <span class="number">1</span>));</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span> :</span><br><span class="line">            Chkmax(max, *++pos2 = b);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span> :</span><br><span class="line">            <span class="keyword">if</span> (pos1 == stk1)</span><br><span class="line">            &#123;</span><br><span class="line">                max = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span> (pos2 != stk2)</span><br><span class="line">                &#123;</span><br><span class="line">                    *++pos1 = *pos2--;</span><br><span class="line">                    Chkmax(*pos1, *(pos1 - <span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            --pos1;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span> :</span><br><span class="line">            assert(<span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Mod(ans += <span class="built_in">std</span>::max(*pos1, max));</span><br><span class="line">    &#125;</span><br><span class="line">    write(ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>$\huge \text{Thanks for your consideration!}$</p>
+<p>$$<br>\huge \text{Thanks for your consideration!}<br>$$</p>
 
       
     </div>
@@ -696,7 +713,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -738,7 +755,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
