@@ -162,7 +162,7 @@
 <meta property="og:site_name" content="k维空间">
 <meta property="og:description" content="前言题面传送门 这里讲的是有别于单调栈和单调队列的做法。 要想看这种做法的，请转至 yongshi的文章 题意要求维护一个异常的栈。 $n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。 $n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。 时限1.5s，输入由参数产生，输出答案的和对 $10^9 + 7$ 取模的值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-28T06:26:55.810Z">
+<meta property="og:updated_time" content="2019-03-30T05:52:21.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[51nod1952]栈">
 <meta name="twitter:description" content="前言题面传送门 这里讲的是有别于单调栈和单调队列的做法。 要想看这种做法的，请转至 yongshi的文章 题意要求维护一个异常的栈。 $n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。 $n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。 时限1.5s，输入由参数产生，输出答案的和对 $10^9 + 7$ 取模的值">
@@ -491,7 +491,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-28 14:26:55" itemprop="dateModified" datetime="2019-03-28T14:26:55+08:00">2019-03-28</time>
+                <time title="修改时间：2019-03-30 13:52:21" itemprop="dateModified" datetime="2019-03-30T13:52:21+08:00">2019-03-30</time>
               
             
           </span>
@@ -565,6 +565,7 @@
 <p>$n$ 次操作，除了正常的栈顶插入删除外，还有一个栈尾插入的操作，每次操作后询问栈内元素最大值。</p>
 <p>$n \le 10^7, 0 \le x \le 10^9$（$x$ 表示插入的数）。</p>
 <p>时限1.5s，输入由参数产生，输出答案的和对 $10^9 + 7$ 取模的值。</p>
+<a id="more"></a>
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>显然只能 $\mathcal O(n)$。</p>
 <p>考虑没有栈尾插入的时候怎么做。</p>
 <p>不需要什么单调栈 + 普通栈，直接用<strong>一个栈记录前缀最大值</strong>就行了，删除就直接让栈顶指针前移一格。</p>
