@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://endsah.cf/about/index.html</loc>
+    
+    <lastmod>2019-05-07T13:23:24.383Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://endsah.cf/posts/13447/</loc>
+    
+    <lastmod>2019-04-01T01:19:29.621Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://endsah.cf/posts/32916/</loc>
     
-    <lastmod>2019-04-01T01:02:13.118Z</lastmod>
+    <lastmod>2019-04-01T01:02:19.038Z</lastmod>
     
   </url>
   
@@ -65,23 +79,9 @@
   </url>
   
   <url>
-    <loc>http://endsah.cf/posts/13447/</loc>
-    
-    <lastmod>2019-02-16T13:18:48.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://endsah.cf/tags/index.html</loc>
     
     <lastmod>2019-02-16T11:04:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://endsah.cf/about/index.html</loc>
-    
-    <lastmod>2018-12-23T08:18:58.000Z</lastmod>
     
   </url>
   
