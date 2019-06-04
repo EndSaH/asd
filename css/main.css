@@ -536,14 +536,14 @@ pre,
   overflow: auto;
   margin: 20px 0;
   padding: 0;
-  font-size: 15px;
+  font-size: 14px;
   color: #4d4d4c;
   background: #f7f7f7;
   line-height: 1.6;
 }
 pre,
 code {
-  font-family: 'Ubuntu Mono', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: 'Mononoki', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   overflow-wrap: break-word;
@@ -552,7 +552,7 @@ code {
   color: #555;
   background: #eee;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 14px;
 }
 pre {
   padding: 10px;
@@ -1900,7 +1900,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5d8c39;
+  background: #40063c;
 }
 .links-of-blogroll {
   font-size: 13px;
