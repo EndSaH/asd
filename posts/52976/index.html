@@ -154,19 +154,19 @@
 
 
 
-  <meta name="description" content="Foreword题目 + 题解 $(i, j) \Longleftrightarrow \gcd (i, j)$ [SDOI2017] 数字表格Description $$T \le 10 ^3, 1 \le n, m \le 10 ^6$$ Solution不妨设 $n \le m$$$\begin{aligned}&amp;amp; \prod _{i = 1} ^n \prod _{j = 1}">
+  <meta name="description" content="Foreword题目 + 题解 $(i, j) \Longleftrightarrow \gcd (i, j)$">
 <meta name="keywords" content="数论,莫比乌斯反演">
 <meta property="og:type" content="article">
 <meta property="og:title" content="莫比乌斯反演习题总结">
 <meta property="og:url" content="http://endsah.cf/posts/52976/index.html">
 <meta property="og:site_name" content="k维空间">
-<meta property="og:description" content="Foreword题目 + 题解 $(i, j) \Longleftrightarrow \gcd (i, j)$ [SDOI2017] 数字表格Description $$T \le 10 ^3, 1 \le n, m \le 10 ^6$$ Solution不妨设 $n \le m$$$\begin{aligned}&amp;amp; \prod _{i = 1} ^n \prod _{j = 1}">
+<meta property="og:description" content="Foreword题目 + 题解 $(i, j) \Longleftrightarrow \gcd (i, j)$">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/05/31/5cf11f83a888765118.png">
-<meta property="og:updated_time" content="2019-06-04T13:03:09.443Z">
+<meta property="og:updated_time" content="2019-06-04T13:08:39.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="莫比乌斯反演习题总结">
-<meta name="twitter:description" content="Foreword题目 + 题解 $(i, j) \Longleftrightarrow \gcd (i, j)$ [SDOI2017] 数字表格Description $$T \le 10 ^3, 1 \le n, m \le 10 ^6$$ Solution不妨设 $n \le m$$$\begin{aligned}&amp;amp; \prod _{i = 1} ^n \prod _{j = 1}">
+<meta name="twitter:description" content="Foreword题目 + 题解 $(i, j) \Longleftrightarrow \gcd (i, j)$">
 <meta name="twitter:image" content="https://i.loli.net/2019/05/31/5cf11f83a888765118.png">
 
 
@@ -476,7 +476,7 @@
                 
               
 
-              <time title="创建时间：2019-06-04 20:55:18 / 修改时间：21:03:09" itemprop="dateCreated datePublished" datetime="2019-06-04T20:55:18+08:00">2019-06-04</time>
+              <time title="创建时间：2019-06-04 20:55:18 / 修改时间：21:08:39" itemprop="dateCreated datePublished" datetime="2019-06-04T20:55:18+08:00">2019-06-04</time>
             
 
             
@@ -550,6 +550,7 @@
 
 <h1 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h1><p>题目 + 题解</p>
 <p>$(i, j) \Longleftrightarrow \gcd (i, j)$</p>
+<a id="more"></a>
 <h1 id="SDOI2017-数字表格"><a href="#SDOI2017-数字表格" class="headerlink" title="[SDOI2017] 数字表格"></a><a href="https://www.luogu.org/problemnew/show/P3704" rel="external nofollow noopener noreferrer" target="_blank">[SDOI2017] 数字表格</a></h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><img src="https://i.loli.net/2019/05/31/5cf11f83a888765118.png" alt></p>
 <p>$$<br>T \le 10 ^3, 1 \le n, m \le 10 ^6<br>$$</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>不妨设 $n \le m$<br>$$<br>\begin{aligned}<br>&amp; \prod _{i = 1} ^n \prod _{j = 1} ^m f((i, j)) \\<br>=&amp; \prod _{d = 1} ^n \prod _{i = 1} ^n \prod _{j = 1} ^m [(i, j) = d] f(d) \\<br>=&amp; \prod _{d = 1} ^n f(d) ^{\sum _{i = 1} ^n \sum _{j = 1} ^m [(i, j) = d]} \\<br>\end{aligned}<br>$$<br>指数部分提出来 单独计算<br>$$<br>\begin{aligned}<br>&amp; \sum _{i = 1} ^n \sum _{j = 1} ^m [(i, j) = d] \\<br>=&amp; \sum _{i = 1} ^{\lfloor \frac n d \rfloor} \sum _{j = 1} ^{\lfloor \frac m d \rfloor} [(i, j) = 1] \\<br>=&amp; \sum _{i = 1} ^{\lfloor \frac n d \rfloor} \sum _{j = 1} ^{\lfloor \frac m d \rfloor} \sum _{x | (i, j)} \mu (x) \\<br>=&amp; \sum _{x = 1} ^{\lfloor \frac n d \rfloor} \mu (x) \lfloor \frac n {dx} \rfloor \lfloor \frac m {dx} \rfloor<br>\end{aligned}<br>$$</p>
